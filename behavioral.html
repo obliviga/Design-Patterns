@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JS Design Patterns</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/main.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav ">
+          <a class="blog-nav-item" href="index.html">Design Patterns &rarr;</a>
+          <a class="blog-nav-item active" href="creational.html">Creational</a>
+          <a class="blog-nav-item" href="structural.html">Structural</a>
+          <a class="blog-nav-item" href="behavioral.html">Behavioral</a>
+          <a class="blog-nav-item" href="github.com">GitHub</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post"><br>
+            <h2>What is a Behavioral Design Pattern?</h2>
+            <p>
+            Behavioral patterns focus on improving or streamlining the communication between
+            disparate objects in a system.
+            </p>
+            <div class="well" id="interpret"></div>
+<!--             <div class="well" id="builder"></div> -->
+            <p>
+              An <b>Interpreter</b> pattern offers a scripting language that allows end-users to customize their solution.
+            </p>
+            <p>
+              A <strong>Builder</strong> separates the construction of a complex object from its representation so that the same construction process can create different representations. Construction details are hidden from the client entirely. 
+            </p>    
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <ol class="list-unstyled">
+              <li>
+                <button class="btn-block btn-default btn-sm" onclick="interpret();return false" href="javascript:void(0);">Interpreter</button>
+              </li>
+              <li>
+                <button class="btn-block btn-primary btn-sm" onclick="build();return false" href="javascript:void(0);">Builder
+                </button>
+              </li>
+            </ol>
+            <ul>
+              <li><a href="/patterns/interpreter.js">interpreter.js</a></li>
+              <li><a href="/patterns/builder.js">builder.js</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <script>
+    var Context = function (input) {
+    this.input = input;
+    this.output = 0;
+    }
+
+    Context.prototype = {
+        startsWith : function (str) {
+            return this.input.substr(0, str.length) === str;
+        }
+    }
+
+    var Expression = function (name, one, four, five, nine, multiplier) {
+        this.name = name;
+        this.one = one;
+        this.four = four;
+        this.five = five;
+        this.nine = nine;
+        this.multiplier = multiplier;
+    }
+
+    function interpret() {
+
+        var roman = "MCMXXVIII"
+        var context = new Context(roman);
+        var tree = [];
+
+        tree.push(new Expression("thousand", "M", " " , " ", " " , 1000));
+        tree.push(new Expression("hundred",  "C", "CD", "D", "CM", 100));
+        tree.push(new Expression("ten",      "X", "XL", "L", "XC", 10));
+        tree.push(new Expression("one",      "I", "IV", "V", "IX", 1));
+
+        for (var i = 0, len = tree.length; i < len; i++) {
+            tree[i].interpret(context);
+        }
+
+        alert(roman + " = " + context.output);
+    }
+    </script>
+  </body>
+</html>

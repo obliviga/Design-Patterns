@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JS Design Patterns</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/main.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav ">
+          <a class="blog-nav-item" href="index.html">Design Patterns &rarr;</a>
+          <a class="blog-nav-item active" href="creational.html">Creational</a>
+          <a class="blog-nav-item" href="structural.html">Structural</a>
+          <a class="blog-nav-item" href="behavioral.html">Behavioral</a>
+          <a class="blog-nav-item" href="github.com">GitHub</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post"><br>
+            <h2>What is a Creational Design Pattern?</h2>
+            <p>
+              Creational design patterns focus on handling object creation mechanisms where objects
+              are created in a manner suitable for the situation you are working in. The basic approach
+              to object creation might otherwise lead to added complexity in a project whilst these
+              patterns aim to solve this problem by controlling the creation process.
+            </p>
+            <div class="well hide" id="abstraction">Ghost</div>
+            <div class="well" id="builder"></div>
+            <p>
+              An <b>Abstract Factory</b> provides an interface for creating families of related or dependent objects without specifying their concrete classes. It creates objects that are related by a common theme. A Factory is simply an object that creates other objects. 
+            </p>
+            <p>
+              A <strong>Builder</strong> separates the construction of a complex object from its representation so that the same construction process can create different representations. Construction details are hidden from the client entirely. 
+            </p>    
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <ol class="list-unstyled">
+              <li>
+                <button class="btn-block btn-default btn-sm" onclick="abstract();return false" href="javascript:void(0);">Abstract Factory</button>
+              </li>
+              <li>
+                <button class="btn-block btn-primary btn-sm" onclick="build();return false" href="javascript:void(0);">Builder
+                </button>
+              </li>
+            </ol>
+            <ul>
+              <li><a href="/patterns/abstraction.js">abstraction.js</a></li>
+              <li><a href="/patterns/builder.js">builder.js</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <script>
+     function Toyota(model) {
+        this.model = model;
+        this.say = function() {
+            log.add("A Toyota " + model + " was created. ");
+        };
+    }
+
+    function ToyotaFactory() {
+        this.create = function(model) {
+            return new Toyota(model);
+        };
+    }
+
+    function Lexus(model) {
+        this.model = model;
+        this.say = function() {
+            log.add("A Lexus " + model + " was created. ");
+        };
+    }
+
+    function LexusFactory() {
+        this.create = function(model) {
+            return new Lexus(model);
+        };
+    }
+
+    var log = (function() {
+        var log = "";
+        return {
+            add: function(msg) {
+                log += msg
+            },
+            show: function() {
+                document.getElementById("abstraction").innerHTML = log;
+                log = "";
+            }
+        }
+    })();
+
+
+    function abstract() {
+
+        var models = [];
+
+        var toyotaFactory = new ToyotaFactory();
+        var lexusFactory = new LexusFactory();
+
+        models.push(toyotaFactory.create("Corolla"));
+        models.push(toyotaFactory.create("Avalon"));
+
+        models.push(lexusFactory.create("IS 217"));
+        models.push(lexusFactory.create("RX 450"));
+
+        for (var i = 0, len = models.length; i < len; i++) {
+            models[i].say();
+        }
+
+        log.show();
+
+    }
+     function drugLab() {
+    this.construct = function(builder) {
+        builder.step1();
+        builder.step2();
+        builder.step3();
+        return builder.get();
+    }
+}
+
+function CookMeth() {
+    this.meth = null;
+    this.step1 = function() {
+        this.meth = new Meth();
+    };
+    this.step2 = function() {
+        this.meth.gatherIngredients();
+    };
+    this.step3 = function() {
+        this.meth.Create();
+    };
+    this.get = function() {
+        return this.meth;
+    };
+}
+
+function CookCrack() {
+    this.crack = null;
+    this.step1 = function() {
+        this.crack = new Crack();
+    };
+    this.step2 = function() {
+        this.crack.gatherIngredients();
+    };
+    this.step3 = function() {
+        this.crack.Create();
+    };
+    this.get = function() {
+        return this.crack;
+    };
+}
+
+function Meth() {
+    this.ingredients = 0;
+    this.rock = 0;
+    this.gatherIngredients = function() {
+        this.ingredients = 10;
+    };
+    this.Create = function() {
+        this.rock = 2;
+    };
+    this.say = function() {
+        log.add("You just created " + this.rock + " rocks of meth using up " + this.ingredients + " ingredients.");
+    };
+}
+
+function Crack() {
+    this.ingredients = 0;
+    this.rock = 0;
+    this.gatherIngredients = function() {
+        this.ingredients = 15;
+    };
+    this.Create = function() {
+        this.rock = 3;
+    };
+    this.say = function() {
+        log.add("You just created " + this.rock + " rocks of crack using up " + this.ingredients + " ingredients.");
+    };
+}
+
+// log helper
+var log = (function () {
+    var log = "";
+    return {
+        add: function (msg) { log += msg + "\n"; },
+        show: function () { 
+          document.getElementById("builder").innerHTML = log; 
+          log = ""; 
+        }
+    }
+})();
+
+function build() {
+    var druglab = new drugLab();
+
+    var cookMeth = new CookMeth();
+    var cookCrack = new CookCrack();
+
+    var meth = druglab.construct(cookMeth);
+    var crack = druglab.construct(cookCrack);
+
+    meth.say();
+    crack.say();
+
+    log.show();
+  }
+
+    </script>
+  </body>
+</html>
