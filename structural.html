@@ -33,33 +33,35 @@
           <a class="blog-nav-item" href="index.html">Design Patterns &rarr;</a>
           <a class="blog-nav-item" href="creational.html">Creational</a>
           <a class="blog-nav-item active" href="structural.html">Structural</a>
-          <a class="blog-nav-item" href="behavioral.html">Behavioral</a>
-          <a class="blog-nav-item" href="github.com">GitHub</a>
+          <a class="blog-nav-item"  href="behavioral.html">Behavioral</a>
+          <a class="blog-nav-item" href="https://github.com/obliviga/Design-Patterns">GitHub</a>
         </nav>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="blog-header">
-        <h1 class="blog-title">Javascript Design Patterns</h1>
-        <p class="lead blog-description">by Anish Kshatriya</p>
-      </div>
-
       <div class="row">
 
         <div class="col-sm-8 blog-main">
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">What is a Design Pattern?</h2>
-            <p>A design pattern is a reusable solution that can be applied to commonly 
-              occurring problems in software design. Another way of looking at patterns 
-              are as templates for how you solve problems - ones which can be used in 
-              quite a few different situations. Patterns are not an exact solution. 
-              It’s important that we remember the role of a pattern is merely to provide 
-              us with a solution scheme. Patterns don’t solve all design problems nor do 
-              they replace good software designers, however, they do support them.
+          <div class="blog-post"><br>
+            <h2>What is a Structural Design Pattern?</h2>
+            <p>
+              Structural patterns are concerned with object composition and typically identify simple
+              ways to realize relationships between different objects. They help ensure that when one
+              part of a system changes, the entire structure of the system doesn't need to do the same.
+              They also assist in recasting parts of the system which don't fit a particular purpose
+              into those that do.<br>
+              Patterns that fall under this category include: Decorator, Facade, Flyweight, Adapter
+              and Proxy.
             </p>
+            <p>
+              A <strong>Facade</strong> provides a unified interface to a set of interfaces in a subsystem. Façade defines a higher-level interface that makes the subsystem easier to use. The Façade pattern provides an interface which shields clients from complex functionality in one or more subsystems. It is a simple pattern that may seem trivial but it is powerful and extremely useful. It is often present in systems that are built around a multi-layer architecture. 
+            </p>
+            <p>
+              A <strong>Decorator</strong> attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.The Decorator pattern extends (decorates) an object’s behavior dynamically. The ability to add new behavior at runtime is accomplished by a Decorator object which ‘wraps itself’ around the original object. Multiple decorators can add or override functionality to the original object. 
+            </p>    
           </div><!-- /.blog-post -->
 
         </div><!-- /.blog-main -->
@@ -67,9 +69,19 @@
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module">
             <ol class="list-unstyled">
-              <li><a class="github" href="https://github.com/">GitHub</a></li>
-              <li><a class="github" href="https://github.com/">GitHub</a></li>
+              <li>
+                <button class="btn-block btn-default btn-sm" onClick="location.href='patterns/facade.js'" href="javascript:void(0);">Facade-Module
+                </button>
+              </li>
+              <li>
+                <button class="btn-block btn-primary btn-sm" onclick="location.href='patterns/decorator.js'" href="javascript:void(0);">Decorator-Constructor
+                </button>
+              </li>
             </ol>
+<!--             <ul>
+              <li><a href="/patterns/facade.js">facade-module.js</a></li>
+              <li><a href="/patterns/dectorator.js">decorator-constructor.js</a></li>
+            </ul> -->
           </div>
         </div><!-- /.blog-sidebar -->
 
@@ -83,5 +95,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
+   
   </body>
 </html>
