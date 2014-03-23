@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JS Design Patterns</title>
+    <title>Behavioral Design Patterns</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -52,12 +52,12 @@
             disparate objects in a system.<br>
             Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
             </p>
-            <div class="well" id="state"></div>
+            <textarea rows="5" cols="45" class="well" id="state"></textarea>
             <p>
               A <b>State</b> pattern provides state-specific logic to a limited set of objects in which each object represents a particular state.
             </p>
             <p>
-              A <strong>Builder</strong> separates the construction of a complex object from its representation so that the same construction process can create different representations. Construction details are hidden from the client entirely. 
+              A <strong>Visitor</strong> represents an operation to be performed on the elements of an object structure. A visitor lets you define a new operation without changing the classes of the elements on which it operates. The Visitor pattern defines a new operation to a collection of objects without changing the objects themselves. The new logic resides in a separate object called the Visitor. Visitors are useful when building extensibility in a library or framework. If the objects in your project provide a 'visit' method that accepts a Visitor object which can make changes to the receiving object then you are providing an easy way for clients to implement future extensions. 
             </p>    
           </div><!-- /.blog-post -->
 
@@ -71,14 +71,13 @@
                 </button>
               </li>
               <li>
-                <button class="btn-block btn-primary btn-sm" onclick="build();return false" href="javascript:void(0);">Builder
+                <button class="btn-block btn-primary btn-sm" onclick="visit();return false" href="javascript:void(0);">Visitor-Constructor
                 </button>
               </li>
             </ol>
-            <ul>
-              <li><a href="/patterns/state.js">state.js</a></li>
+<!--             <ul>
               <li><a href="/patterns/builder.js">builder.js</a></li>
-            </ul>
+            </ul> -->
           </div>
         </div><!-- /.blog-sidebar -->
 
@@ -138,8 +137,6 @@
         }
     };
 
-    // log helper
-
     var log = (function () {
         var log = "";
         return {
@@ -157,6 +154,75 @@
 
         var car = new vehicle();
         car.start();
+
+        log.show();
+    }
+/////////////////////////////////////////////////////////////////////
+    var Employee = function (name, salary, vacation) {
+
+      var self = this;
+          
+      this.accept = function (visitor) {
+          visitor.visit(self);
+      };
+      this.getName = function () {
+          return name;
+      };
+      this.getSalary = function () {
+          return salary;
+      };
+      this.setSalary = function (sal) {
+          salary = sal;
+      };
+      this.getVacation = function () {
+          return vacation;
+      };
+      this.setVacation = function (vac) {
+          vacation = vac;
+      };
+    };
+
+    var ExtraSalary = function () {
+        this.visit = function (emp) {
+            emp.setSalary(emp.getSalary() * 1.1);
+        };
+    };
+    var ExtraVacation = function () {
+        this.visit = function (emp) {
+            emp.setVacation(emp.getVacation() + 2);
+        };
+    };
+
+    var log = (function() {
+        var log = "";
+        return {
+            add: function(msg) { log += msg + "\n"; },
+            show: function() { document.getElementById("state").innerHTML = log; log = ""; }
+        }
+    })();
+
+
+    function visit() {
+            
+        var employees = [
+            new Employee("John", 10000, 10),
+            new Employee("Mary", 20000, 21),
+            new Employee("Boss", 250000, 51)
+        ];
+
+        var visitorSalary = new ExtraSalary();
+        var visitorVacation = new ExtraVacation();
+            
+        for (var i = 0, len = employees.length; i < len; i++) {
+
+            var emp = employees[i];
+                
+            emp.accept(visitorSalary);
+            emp.accept(visitorVacation);
+
+            log.add(emp.getName() + ": $" + emp.getSalary() +
+                " and " + emp.getVacation() + " vacation days");
+        }
 
         log.show();
     }
