@@ -44,7 +44,7 @@
 
       <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-6 blog-main">
 
           <div class="blog-post"><br>
             <h2>What is a Creational Design Pattern?</h2>
@@ -57,24 +57,12 @@
               Prototype, Singleton and Builder.
             </p>
             <div class="well hide" id="abstraction">Ghost</div>
-            <textarea rows="5" cols="45" class="well" id="builder"></textarea>
-            <p>
-              An <b>Abstract Factory</b> provides an interface for creating families of related or dependent objects without specifying their concrete classes. It creates objects that are related by a common theme. A Factory is simply an object that creates other objects. 
-            </p>
-            <p>
-              A <strong>Builder</strong> separates the construction of a complex object from its representation so that the same construction process can create different representations. Construction details are hidden from the client entirely. 
-            </p>
-            <p>
-              A <strong>Prototype</strong> specifies the kind of objects to create using a prototypical instance, and create new objects by copying this prototype. The Prototype Pattern creates new objects, but rather than creating non-initialized objects it returns objects that are initialized with values it copied from a prototype - or sample - object. The Prototype pattern is also referred to as the Properties pattern.
-            </p>  
-            <p>
-              A <strong>Namespace</strong> provides scope to functions and classes.  It allows you to use the same function or class name in different parts of the same program without causing a name collision.
-            </p>
+            <textarea rows="4" cols="45" class="well" id="builder"></textarea>
           </div><!-- /.blog-post -->
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-5 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module">
             <ol class="list-unstyled">
               <li>
@@ -94,6 +82,18 @@
               <li><a href="/patterns/abstraction.js">abstraction.js</a></li>
               <li><a href="/patterns/builder.js">builder.js</a></li>
             </ul>
+                        <p>
+              An <b>Abstract Factory</b> provides an interface for creating families of related or dependent objects without specifying their concrete classes. It creates objects that are related by a common theme. A Factory is simply an object that creates other objects. 
+            </p>
+            <p>
+              A <strong>Builder</strong> separates the construction of a complex object from its representation so that the same construction process can create different representations. Construction details are hidden from the client entirely. 
+            </p>
+            <p>
+              A <strong>Prototype</strong> specifies the kind of objects to create using a prototypical instance, and create new objects by copying this prototype. The Prototype Pattern creates new objects, but rather than creating non-initialized objects it returns objects that are initialized with values it copied from a prototype - or sample - object. The Prototype pattern is also referred to as the Properties pattern.
+            </p>  
+            <p>
+              A <strong>Namespace</strong> provides scope to functions and classes.  It allows you to use the same function or class name in different parts of the same program without causing a name collision.
+            </p>
           </div>
         </div><!-- /.blog-sidebar -->
 
@@ -108,7 +108,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/vendor/qunit.js"></script>
-    <script src="/tests/abstractionTest.js"></script>
+    <script src="/tests/creationalTest.js"></script>
     <script>
  function Toyota(model) {
      this.model = model;
