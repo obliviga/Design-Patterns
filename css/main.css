@@ -1,4 +1,6 @@
-
+p {
+    text-align:justify;
+}
 body {
     color: #555555;
     font-family: Georgia,"Arial",Arial,sans-serif;
