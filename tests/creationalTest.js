@@ -3,8 +3,15 @@ test( "Abstract test", function Toyota(model) {
 	ok( this.model = model, "Lexus created!" );
 });
 
-test( "Builder test", function drugLab(model) {
-	ok( this.model = model, "Lexus created!" );
+QUnit.test( "Builder test", function( assert ) {
+
+	function createMeth( ingredients, rock ) {
+		return "You just created " + rock + " rocks of meth using up " + ingredients + " ingredients.";
+	}
+	var methString = "You just created 2 rocks of meth using up 10 ingredients.";
+	var meth = createMeth( 10, 2 );
+	assert.equal( meth, methString, "You just created 2 rocks of meth using up 10 ingredients.");
+
 });
 
 test( "Prototype test", function() {
