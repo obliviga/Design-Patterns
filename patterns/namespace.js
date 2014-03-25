@@ -1,8 +1,8 @@
 var namespace = namespace || {};
  
-// here a namespace2 object is passed as a function
-// parameter, where we assign public methods and
-// properties to it
+// namespace object is passed as a function
+// parameter. The public methods and
+// properties are assigned to the namespace
 (function( car ){
 
     car.model = "BMW X3";
