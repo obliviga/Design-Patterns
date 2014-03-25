@@ -23,6 +23,13 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+
+    .smaller-text {
+      font-size: 15px;   
+    }
+
+    </style>
   </head>
 
   <body>
@@ -43,7 +50,7 @@
 
       <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-6 blog-main">
 
           <div class="blog-post"><br>
             <h2>What is a Structural Design Pattern?</h2>
@@ -56,17 +63,14 @@
               Patterns that fall under this category include: Decorator, Facade, Flyweight, Adapter
               and Proxy.
             </p>
-            <p>
-              A <strong>Facade</strong> provides a unified interface to a set of interfaces in a subsystem. Façade defines a higher-level interface that makes the subsystem easier to use. The Façade pattern provides an interface which shields clients from complex functionality in one or more subsystems. It is a simple pattern that may seem trivial but it is powerful and extremely useful. It is often present in systems that are built around a multi-layer architecture. 
-            </p>
-            <p>
-              A <strong>Decorator</strong> attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.The Decorator pattern extends (decorates) an object’s behavior dynamically. The ability to add new behavior at runtime is accomplished by a Decorator object which ‘wraps itself’ around the original object. Multiple decorators can add or override functionality to the original object. 
-            </p>    
+             <p class="smaller-text">
+              A <strong>Module Pattern</strong> is very common in the JavaScript world with its great importance. It helps us to write clean object oriented JavaScript. Module Pattern restricts the developer to create multiple Global Variables. It is always a good practice to have less number of global variables for good performance of web application. Hence this pattern increases the performance of your website, at the same time it gives the well maintainable object oriented programing practice. 
+            </p> 
           </div><!-- /.blog-post -->
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-5 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module">
             <ol class="list-unstyled">
               <li>
@@ -82,11 +86,36 @@
               <li><a href="/patterns/facade.js">facade-module.js</a></li>
               <li><a href="/patterns/decorator.js">decorator-constructor.js</a></li>
             </ul>
+            <p>
+              A <strong>Facade</strong> provides a unified interface to a set of interfaces in a subsystem. Façade defines a higher-level interface that makes the subsystem easier to use. The Façade pattern provides an interface which shields clients from complex functionality in one or more subsystems. It is a simple pattern that may seem trivial but it is powerful and extremely useful. It is often present in systems that are built around a multi-layer architecture. 
+            </p>
+            <p>
+              A <strong>Decorator</strong> attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.The Decorator pattern extends (decorates) an object’s behavior dynamically. The ability to add new behavior at runtime is accomplished by a Decorator object which ‘wraps itself’ around the original object. Multiple decorators can add or override functionality to the original object. 
+            </p>
           </div>
         </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
-
+      <div class="row">
+        <div class="col-sm-12">
+        <p class="smaller-text">
+          <strong>Constructors</strong> are used to create specific types of objects - they both prepare the object
+          for use and can also accept parameters which the constructor uses to set the values of
+          member variables when the object is first created. The idea that a constructor is a paradigm
+          can be found in the majority of programming languages, including JavaScript.
+          You’re also able to define custom constructors that define properties and methods for
+          your own types of objects.
+          Basic Constructors
+          In JavaScript, constructor functions are generally considered a reasonable way to implement
+          instances. As we saw earlier, JavaScript doesn't support the concept of classes
+          but it does support special constructor functions. By simply prefixing a call to a constructor
+          function with the keyword 'new', you can tell JavaScript you would like function
+          to behave like a constructor and instantiate a new object with the members defined
+          by that function.Inside a constructor, the keyword 'this' references the new object that's
+          being created.
+        </p> 
+      </div>
+      </div>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
