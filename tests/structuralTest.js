@@ -38,5 +38,3 @@ test( "Check if the parts are delivered.", function() {
 
 	ok( true, "The parts are delivered." );
 });
-////////////////////////////////////////////
-
